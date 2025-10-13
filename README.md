@@ -19,15 +19,17 @@ Aplicación Android desarrollada en Java que te ayuda a gestionar el cuidado de 
 - **Base de datos:** Room
 - **UI:** Material Design 3
 
-## 👥 Equipo
-- **xxx:** UX/UI & Product Owner
-- **xxx:** Tech Lead & Android Dev
-- **xxx:** Backend & QA
+## Equipo
+- **Jaime:** UX/UI 
+- **Victoria:** Tech Lead & Android Dev
+- **Delfina:** Product Owner
+- **Equipo entero:** Backend & QA
 
 ## 📅 Estado Actual
 **H1 en desarrollo** - Entregable: 14/10/2025
 
 ### Progreso:
+- Planeacion del desarrollo
 - Onboarding diseñado en Figma
 - Pantalla principal (en desarrollo)
 
