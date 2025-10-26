@@ -14,7 +14,6 @@
         android:theme="@style/Theme.PlantCare"
         tools:targetApi="31">
 
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -26,6 +25,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".Vista1Activity"
+            android:exported="true"
+            android:label="Paso 1"
+            android:theme="@style/Theme.PlantCare" />
+
 
         <activity
             android:name=".Vista2Activity"
@@ -33,11 +38,17 @@
             android:label="Paso 2"
             android:theme="@style/Theme.PlantCare" />
 
-
         <activity
             android:name=".Vista3Activity"
             android:exported="false"
             android:label="Paso 3"
+            android:theme="@style/Theme.PlantCare" />
+
+
+        <activity
+            android:name=".Vista4Activity"
+            android:exported="false"
+            android:label="Paso 4"
             android:theme="@style/Theme.PlantCare" />
 
     </application>
