@@ -3,27 +3,27 @@ package com.example.plantcare;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Vista1Activity extends AppCompatActivity {
 
-    private AdaptadorTexto adaptador;
-    private List<String> textos;
     static final String PREFS = "prefs_onboarding";
     static final String KEY_NOMBRE = "nombre_usuario";
+
+    private RecyclerView recyclerView;
+    private AdaptadorPlanta adaptadorPlantas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vista1);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -36,38 +36,51 @@ public class Vista1Activity extends AppCompatActivity {
         }
 
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewTextos);
+        recyclerView = findViewById(R.id.recyclerViewTextos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        textos = new ArrayList<>();
-        textos.add("Trasplantar al cactus");
-        textos.add("Regar a Norma, la rosa");
-        textos.add("Sacar foto al potus");
 
-        adaptador = new AdaptadorTexto(textos);
-        recyclerView.setAdapter(adaptador);
+        List<Planta> plantas = PlantLista.obtenerPlantas();
 
 
-        Button btnMisPlantas = findViewById(R.id.btnMisPlantas);
-        Button btnGaleria = findViewById(R.id.btnGaleria);
+        AdaptadorPlanta adaptadorPlantas = new AdaptadorPlanta(
+                plantas,
+                position -> {
+                    Intent i = new Intent(Vista1Activity.this, EditarPlantaActivity.class);
+                    i.putExtra("posicion", position);
+
+                    startActivity(i);
+                }
+        );
+
+        recyclerView.setAdapter(adaptadorPlantas);
+
+
+
+        Button btnAgregar = findViewById(R.id.btnAgregarPlanta);
         Button btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
-        btnMisPlantas.setOnClickListener(v -> {
-            textos.add("Nueva planta agregada (simulado)");
-            adaptador.notifyItemInserted(textos.size() - 1);
-        });
 
-        btnGaleria.setOnClickListener(v -> {
-            textos.add("Abriendo galería (simulado)");
-            adaptador.notifyItemInserted(textos.size() - 1);
+        btnAgregar.setOnClickListener(v -> {
+            Intent i = new Intent(Vista1Activity.this, AgregarPlantaActivity.class);
+            startActivity(i);
         });
 
 
         btnCerrarSesion.setOnClickListener(v -> {
-            sp.edit().clear().apply(); // borra los datos del usuario
+            sp.edit().clear().apply();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (recyclerView.getAdapter() != null) {
+            recyclerView.getAdapter().notifyDataSetChanged();
+        }
     }
 }
