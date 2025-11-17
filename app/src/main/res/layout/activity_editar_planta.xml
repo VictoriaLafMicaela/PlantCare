@@ -1,44 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/etEditarNombre"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre de la planta"
-        android:textSize="18sp"
-        android:padding="8dp"/>
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/etEditarTipo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tipo de la planta"
-        android:layout_marginTop="12dp"
-        android:textSize="18sp"
-        android:padding="8dp"/>
+        <ImageView
+            android:id="@+id/ivFotoPlanta"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:background="#DDDDDD"
+            android:contentDescription="Foto de la planta" />
 
-    <Button
-        android:id="@+id/btnGuardarCambios"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Guardar cambios"
-        android:layout_marginTop="20dp"
-        android:padding="12dp"/>
+        <Button
+            android:id="@+id/btnCambiarFoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cambiar foto"
+            android:layout_marginTop="12dp" />
 
-    <Button
-        android:id="@+id/btnEliminarPlanta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Eliminar planta"
-        android:layout_marginTop="12dp"
-        android:padding="12dp"
-        android:backgroundTint="#D32F2F"
-        android:textColor="#FFFFFF"/>
+        <EditText
+            android:id="@+id/etEditarNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de la planta"
+            android:layout_marginTop="16dp" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etEditarTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tipo de planta"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnGuardarCambios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar cambios"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/btnEliminarPlanta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar planta"
+            android:layout_marginTop="12dp"
+            android:padding="12dp"
+            android:backgroundTint="#D32F2F"
+            android:textColor="#FFFFFF"/>
+
+
+    </LinearLayout>
+
+</ScrollView>
+
