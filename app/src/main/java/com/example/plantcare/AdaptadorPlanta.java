@@ -12,8 +12,7 @@ import java.util.List;
 
 public class AdaptadorPlanta extends RecyclerView.Adapter<AdaptadorPlanta.PlantaViewHolder> {
 
-    private List<Planta> listaPlantas;
-
+    public List<Planta> listaPlantas;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -21,10 +20,14 @@ public class AdaptadorPlanta extends RecyclerView.Adapter<AdaptadorPlanta.Planta
 
     private OnItemClickListener listener;
 
-
     public AdaptadorPlanta(List<Planta> listaPlantas, OnItemClickListener listener) {
         this.listaPlantas = listaPlantas;
         this.listener = listener;
+    }
+
+    public void actualizarLista(List<Planta> nuevas) {
+        this.listaPlantas = nuevas;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -57,7 +60,6 @@ public class AdaptadorPlanta extends RecyclerView.Adapter<AdaptadorPlanta.Planta
 
             txtNombre = itemView.findViewById(R.id.txtNombrePlanta);
             txtTipo = itemView.findViewById(R.id.txtTipoPlanta);
-
 
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
